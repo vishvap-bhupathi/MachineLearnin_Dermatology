@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dermatology Data Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Title -->
+    <header>
+        <h1>Data-Driven Classification of Erythemato-Squamous Skin Diseases</h1>
+        <p>Using Clinical and Histopathological Features</p>
+    </header>
+
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="javascript:void(0)" onclick="showTab('intro')">Introduction</a></li>
+            <li><a href="javascript:void(0)" onclick="showTab('data')">Data</a></li>
+            
+        </ul>
+        <div class="external-links">
+            <a href="https://github.com/YourRepo" target="_blank">GitHub</a>
+            
+        </div>
+    </nav>
+
+    <!-- Introduction Section -->
+    <section id="intro" class="tab-section active">
+        <h2>Introduction</h2>
+        <p>
+        Erythemato‑squamous diseases are a group of skin conditions that share similar clinical features such as redness (erythema) and scaling of the skin, yet they represent different underlying disorders including psoriasis, seborrheic dermatitis, lichen planus, pityriasis rosea, chronic dermatitis, and pityriasis rubra pilaris. Because these conditions look very similar to the naked eye and even under microscopic examination, distinguishing between them can be a real clinical challenge for dermatologists. In everyday practice, patients with these diseases may present with irritating skin lesions that impact quality of life, cause persistent itching or discomfort, affect self‑image, and sometimes lead to long treatment courses with varying success. Accurate diagnosis often relies on a combination of detailed clinical evaluation and invasive procedures such as skin biopsies, which are costly, time‑consuming, and uncomfortable for patients. In a typical dermatology outpatient clinic, common skin disorders including dermatitis, psoriasis, and seborrheic dermatitis constitute a significant proportion of visits, with papulosquamous disorders alone accounting for noticeable percentages of cases seen worldwide. For example, studies of dermatology populations indicate that psoriasis and related conditions make up several percent of all diagnoses, underlining the public health relevance of these disorders and the need for efficient diagnostic approaches.
+        </p>
+        <div class="intro-image">
+            <img src="https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/topic_centers/2020-4/12816-Psoriasis_Facts_Statistics_and_You-1296x1283-Infographic-1.jpg?w=1155&h=2694" alt="Dermatology Image">
+            
+        </div>
+        <p>
+        Over the years, researchers and clinicians have explored a variety of approaches to improve the diagnosis and classification of erythemato‑squamous diseases. Traditional methods include histopathological examination under a microscope and the use of dermoscopy to observe subtle surface patterns and colors that may help distinguish between conditions; for example, certain vascular or scaling patterns are seen more often in specific disorders than others. However, despite these efforts, the differential diagnosis remains difficult and inconsistent, even among experienced dermatologists, because many features overlap between diseases. To address this, recent research has turned to data‑driven methods, where patient data — including clinical and histological features — are analyzed using statistical and machine learning techniques. In some studies, hybrid deep learning models have been proposed that combine multiple computational methods to achieve high accuracy in distinguishing between these conditions, in some cases exceeding 95 % classification performance. These advances suggest that computational analysis of structured clinical and histological data may provide valuable support to clinicians, helping them make faster and more reproducible decisions and reducing dependence on invasive biopsies. Moreover, the prevalence of these conditions, such as psoriasis affecting millions globally, underscores the potential impact of better diagnostic tools on patient care and healthcare efficiency.
+        </p>
+
+        <h2>Research Questions</h2>
+        <div class="questions-container">
+            <div class="question-box">Which features most strongly differentiate psoriasis from other classes?</div>
+            <div class="question-box">How does age affect the severity of erythema and scaling?</div>
+            <div class="question-box">Are there correlations between histopathological features and clinical observations?</div>
+            <div class="question-box">Can family history predict disease class?</div>
+            <div class="question-box">Which features are most important for early detection?</div>
+            <div class="question-box">Do specific features cluster together for certain disease types?</div>
+            <div class="question-box">How balanced are the classes, and do we need sampling methods?</div>
+            <div class="question-box">Can dimensionality reduction improve model performance?</div>
+            <div class="question-box">Are there age or gender biases in the dataset?</div>
+            <div class="question-box">How can models generalize to unseen patient data?</div>
+        </div>
+    </section>
+
+    <!-- Data Section -->
+    <section id="data" class="tab-section">
+        <h2>Data Overview</h2>
+        <p>Click a box below to explore Data Preparation or EDA.</p>
+        <div class="data-boxes">
+            <div class="data-box" onclick="showTab('dataprep')">
+                <h3>Data Preparation</h3>
+                <p>How the dataset was gathered, cleaned, and preprocessed.</p>
+            </div>
+            <div class="data-box" onclick="showTab('eda')">
+                <h3>Exploratory Data Analysis</h3>
+                <p>Visualizations and insights from the data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Prep Section -->
+    <section id="dataprep" class="tab-section">
+    <h2>Data Preparation</h2>
+    <p>
+        This section describes how the data for this project was gathered, cleaned, and prepared for analysis. 
+        The goal of this stage is to understand the structure, quality, and key characteristics of the data 
+        before applying any machine learning or analytical techniques.
+    </p>
+
+    <!-- Data Source -->
+    <h3>Data Source</h3>
+    <p>
+        The primary dataset used in this project is the <strong>Dermatology Dataset</strong>, obtained from Kaggle. 
+        The dataset contains clinical and histopathological attributes for patients diagnosed with erythemato-squamous skin diseases. 
+        Each row represents an individual patient, and each column represents a clinical or histological feature related to the diagnosis.
+    </p>
+    <ul>
+        <li>Dataset source: <a href="https://www.kaggle.com/datasets/olcaybolat1/dermatology-dataset-classification" target="_blank">Kaggle - Dermatology Dataset</a></li>
+        <li>File used: <code>dermatology_raw.csv</code></li>
+    </ul>
+
+    <!-- API / Contextual Data -->
+    
+<div class="image-box">
+            <img src="images/before.png" alt="Raw Data Sample" class="small-img">
+            <p>Raw Data Sample</p>
+        </div>
+    <!-- Data Cleaning -->
+
+
+
+<h3>Kaggle API</h3>
+    <p>
+        To access the dermatology dataset efficiently, the Kaggle API was used to programmatically download the data in Python. By authenticating with a Kaggle account, the dataset was retrieved directly from the Kaggle repository using a simple API command, ensuring that the latest version was always used. The API allowed for automatic downloading and unzipping of the dataset, which streamlined the data acquisition process and minimized manual intervention. This approach also ensured reproducibility, as the exact dataset version can be referenced in the code. Once downloaded, the raw data was inspected and stored locally as dermatology_raw.csv for further cleaning and preprocessing.
+    </p>
+    <p>
+
+    <h3>Data Cleaning and Preparation</h3>
+    <p>
+        Data cleaning and preparation were performed using Python to ensure the dataset was accurate, consistent, and suitable for analysis. 
+        The dataset was inspected for missing values, incorrect entries, and duplicate records. 
+        Missing values were minimal and handled using appropriate imputation methods. Data types for all features were verified for correctness.
+    </p>
+    <p>
+        Additional preparation steps included:
+    </p>
+    <ul>
+        <li>Encoding categorical variables such as family history, sex, and disease class</li>
+        <li>Standardizing numerical features such as erythema, scaling, and other histopathological attributes</li>
+        <li>Creating derived labels or categories where necessary for classification tasks</li>
+        <li>Checking for outliers or inconsistent measurements in continuous variables</li>
+    </ul>
+    <p>
+        These steps ensured that the dataset was well-structured and ready for exploratory data analysis and machine learning modeling.
+    </p>
+
+    <!-- Optional Images -->
+    <div class="data-images">
+        
+        <div class="image-box">
+            <img src="images/outliers.png" alt="Outliers Before Cleaning" class="small-img">
+            <p>Outliers Before Cleaning</p>
+        </div>
+        <div class="image-box">
+            <img src="images/after.png" alt="Cleaned Data Sample" class="small-img">
+            <p>Cleaned Data Sample</p>
+        </div>
+    </div>
+
+    
+    
+</section>
+
+<section id="eda" class="tab-section">
+    <h2>Exploratory Data Analysis</h2>
+    <p>In this section, we explore the dermatology dataset visually to understand patterns, distributions, and relationships between features. Each visualization highlights an important aspect of the data that informs further analysis and modeling.</p>
+
+    <div class="eda-grid">
+
+        <!-- EDA Plot 1 -->
+        <div class="eda-card">
+            <img src="images/eda1.png" alt="EDA Plot 1">
+            <p>This bar chart shows how patient cases are distributed across the six erythemato-squamous diseases in the dataset. Disease class 1 has the highest number of samples, while class 6 has the fewest, indicating that the dataset is imbalanced. Such imbalance is important because machine learning models may become biased toward more frequent classes, potentially reducing performance for rare conditions. The variation in class frequencies also reflects real-world clinical scenarios where certain skin diseases are more commonly diagnosed than others. Understanding this distribution helps guide decisions such as applying class weighting or resampling techniques to ensure fair model performance across all disease types.</p>
+        </div>
+
+        <!-- EDA Plot 2 -->
+        <div class="eda-card">
+            <img src="images/eda2.png" alt="EDA Plot 2">
+            <p>The histogram illustrates the age distribution of patients included in the dermatology dataset. Most patients fall between approximately 20 and 50 years, with fewer cases at very young and older ages. The smooth curve indicates a fairly continuous distribution rather than isolated age clusters, suggesting that erythemato-squamous diseases affect a broad age range. Age can play a role in disease manifestation and diagnosis, so recognizing its distribution helps assess whether age should be treated as an influential predictive feature. Since the data does not show extreme skewness, age appears well represented and suitable for use in classification modeling.</p>
+        </div>
+
+        <!-- EDA Plot 3 -->
+        <div class="eda-card">
+            <img src="images/eda3.png" alt="EDA Plot 3">
+            <p>The provided box plot illustrates the distribution of Erythema Scores (ranging from approximately 0.5 to 3.0) across six distinct Disease Classes. Disease Classes 1 and 2 show the highest central tendencies, with medians and upper quartiles reaching the maximum score of 3.0, though Class 1 exhibits a much broader range of lower scores. In contrast, Classes 3, 4, and 6 appear highly concentrated, with their primary data clusters flattened around a score of 2.0, punctuated only by specific outliers at the 1.0 and 3.0 marks. Class 5 displays a unique downward shift compared to the first two categories, with its interquartile range spanning between 1.0 and 2.0, suggesting that while redness is present, it is generally less severe in this group than in Classes 1 and 2.</p>
+        </div>
+
+        <!-- EDA Plot 4 -->
+        <div class="eda-card">
+            <img src="images/eda4.png" alt="EDA Plot 4">
+            <p>The provided Correlation Heatmap illustrates the linear relationships between various clinical and histopathological features, with a color scale ranging from strong negative correlation (deep blue, -0.6) to strong positive correlation (deep red, 1.0). A prominent cluster of high positive correlation is visible among features like clubbing_rete_ridges, elongation_rete_ridges, and thinning_suprapapillary_epidermis, suggesting these structural changes often occur simultaneously in certain skin conditions. Additionally, polygonal_papules shows a strong positive relationship with oral_mucosal_involvement, melanin_incontinence, and focal_hypergranulosis, which may indicate a specific diagnostic pattern. Conversely, the class variable exhibits several negative correlations, particularly with erythema and scaling, implying that as these specific symptom scores increase, the numerical value of the disease classification tends to decrease.</p>
+        </div>
+
+        <!-- EDA Plot 5 -->
+        <div class="eda-card">
+            <img src="images/eda5.png" alt="EDA Plot 5">
+            <p>This Pairwise Relationship plot (or pair plot) visualizes the interactions between clinical features—erythema, scaling, acanthosis, and age—color-coded by the six disease classes. The diagonal density plots reveal that while most classes share overlapping distributions for physical symptoms, Class 6 (yellow) stands out with a significantly younger age distribution compared to the other groups, which peak more broadly between ages 30 and 50. The scatter plots indicate that the clinical scores (erythema, scaling, and acanthosis) are categorical in nature, as data points are clustered at integer values (0, 1, 2, and 3), showing that high scores in these categories are common across several diseases but appear most densely populated for Class 1 (red). Overall, while physical symptoms show significant overlap, age appears to be a stronger differentiator for identifying specific classes like Class 6.</p>
+        </div>
+
+        <!-- EDA Plot 6 -->
+        <div class="eda-card">
+            <img src="images/eda6.png" alt="EDA Plot 6">
+            <p>This grouped bar chart displays the distribution of Family History across the six disease classes, where 0 signifies no history and 1 signifies a positive history. Across all classes, the vast majority of patients do not have a family history of their respective conditions, with Class 1 showing the highest count in this category at 80 patients. Interestingly, Class 1 and Class 6 appear most distinct regarding genetic prevalence; Class 1 has a significant secondary cluster of over 30 patients with a positive family history, while Class 6 shows an equal split of 10 patients with and 10 without a family history. Conversely, Classes 2, 3, 4, and 5 show very few to no instances of positive family history, suggesting that these specific conditions may be less driven by hereditary factors compared to Class 1.</p>
+        </div>
+
+        <!-- EDA Plot 7 -->
+        <div class="eda-card">
+            <img src="images/eda7.png" alt="EDA Plot 7">
+            <p>The provided box plot illustrates the Age Distribution Across Disease Classes, highlighting significant demographic differences between the various conditions. Most disease classes (1 through 5) exhibit broad age ranges, typically spanning from approximately 10 to 70 years, with median ages clustering between 35 and 40. Disease Class 6 stands out as a clear outlier in this dataset, presenting a much younger and more concentrated patient profile with a median age below 10 and a maximum age (excluding one outlier) reaching only about 16. This stark contrast is corroborated by the pairwise density plots, which show Class 6 (yellow) having a sharp, narrow peak at the lower end of the age scale while other classes show wider, overlapping curves. Such a distinct age distribution for Class 6 suggests it may represent a pediatric-specific condition, whereas the other classes are prevalent across a wider adult demographic.</p>
+        </div>
+
+        <!-- EDA Plot 8 -->
+        <div class="eda-card">
+            <img src="images/eda8.png" alt="EDA Plot 8">
+            <p>The Distribution of Acanthosis by Disease Class violin plot illustrates the density and spread of acanthosis scores across the six clinical categories. Most classes exhibit a high density around a score of 2.0, with Class 3 and Class 5 showing more prominent clusters at the higher end of the scale, near 3.0. In contrast, Class 4 displays a noticeable bimodal-like shape with a significant concentration of lower scores near 1.0, suggesting a generally less severe presentation of acanthosis compared to the other groups. This variation aligns with the Pairwise Relationship data, which shows that while acanthosis scores are categorical (0–3), their frequency and intensity fluctuate depending on the specific disease class being observed.</p>
+        </div>
+
+        <!-- EDA Plot 9 -->
+        <div class="eda-card">
+            <img src="images/eda9.png" alt="EDA Plot 9">
+            <p>The Correlation of Features with Disease Class heatmap provides a detailed look at which clinical and histopathological markers most strongly influence the numerical classification of the skin conditions in this dataset. According to the chart, the features with the strongest positive correlations to higher class numbers are fibrosis_papillary_dermis (0.53), follicular_papules (0.48), and perifollicular_parakeratosis (0.46), suggesting these specific markers are highly characteristic of the upper disease classes. Conversely, several features show strong negative correlations with the class variable, most notably thinning_suprapapillary_epidermis (-0.68) and clubbing_rete_ridges (-0.67), which indicates that as these symptoms become more severe, the disease is more likely to be categorized into the lower numerical classes, such as Class 1 or 2. This aligns with other visual data, such as the Pairwise Relationship plot, where Class 1 (red) and Class 2 (blue) show dense clusters for symptoms like erythema and scaling, which also carry negative correlation coefficients of -0.34 and -0.47 respectively. Additionally, while age shows a negative correlation of -0.25 with the class variable, the Age Distribution box plot clarifies that this is largely driven by the extremely young demographic of Class 6, which has a median age below 10, whereas the other classes are distributed broadly across adult ages. Ultimately, the heatmap clarifies that while many features like focal_hypergranulosis (0.063) or itching (0.055) have negligible direct impact on the class number, structural histopathological changes like PNL_infiltrate (-0.55) and scalp_involvement (-0.53) serve as the most significant mathematical differentiators for identifying the specific disease category.</p>
+        </div>
+
+        <!-- EDA Plot 10 -->
+        <div class="eda-card">
+            <img src="images/eda10.png" alt="EDA Plot 10">
+            <p>This scatter plot examines the relationship between Erythema Score and Scaling Score, categorized by the six disease classes. Because both metrics use a discrete scoring system (typically 0–3), the data points are strictly aligned on a grid, showing that Class 1 (blue) is the most widespread, appearing at almost every combination of high erythema and high scaling scores. Class 2 (orange) and Class 3 (green) show more specific clusters; for instance, Class 2 is notably present at the intersection of a 2.0 erythema score and 2.0 scaling score, while Class 3 appears at lower levels of both. Class 5 (purple) is concentrated at lower scaling scores (0.0 to 1.0) even when erythema scores are present, which aligns with the Correlation Heatmap where scaling has a negative correlation with higher class numbers. Notably, Class 6 (brown) and Class 4 (red) are less visible or overlapping in this specific view, suggesting that these two symptoms alone may not be the primary clinical differentiators for those conditions compared to features like Age or Family History.</p>
+        </div>
+
+    </div>
+</section>
+
+       
+
+    <!-- EDA Section -->
+    
+
+
+    <!-- JS for Tabs -->
+    <script>
+        function showTab(tabId){
+            const sections = document.querySelectorAll('.tab-section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
